@@ -1,0 +1,41 @@
+{
+  "name": "mailchimp",
+  "version": "1.0.0",
+  "description": "web app for mailing compaigns",
+  "main": "index.js",
+  "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.3",
+    "install": "^0.12.1",
+    "mongoose": "^5.2.17",
+    "npm": "^6.4.1",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yassine56/mailchimp.git"
+  },
+  "keywords": [
+    "mail",
+    "node",
+    "react",
+    "passportjs",
+    "redux",
+    "stripe",
+    "mongodb"
+  ],
+  "author": "Abouelouafa Yassine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yassine56/mailchimp/issues"
+  },
+  "homepage": "https://github.com/Yassine56/mailchimp#readme"
+}
