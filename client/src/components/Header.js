@@ -8,17 +8,14 @@ class Header extends Component {
     switch(this.props.auth){
       case false :
           return 'no user logged in';
-      case null :
+      case  null:
           return 'still deciding';
-          break;
       default :
           return 'user logged in';
-          break;
     }
   }
 
   render () {
-    console.log(this.props);
     return (
       <nav>
         <div className="nav-wrapper">

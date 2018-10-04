@@ -87,9 +87,12 @@ module.exports = (app) =>{
   });
 
   app.get('/API/currentUser', (req,res) => {
-
-  res.send({
-    user : req.user})
+  if (req.user){
+    res.send({
+      user : req.user
+    })
+  }
+else res.send(false);
   });
 
   app.get('/API/logout', (req,res) => {
