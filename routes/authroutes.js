@@ -96,9 +96,8 @@ else res.send(false);
   });
 
   app.get('/API/logout', (req,res) => {
-  req.session = null;
-  res.send({
-    user : 'logged out'})
+  req.logout();
+  res.redirect('/')
   });
 
 

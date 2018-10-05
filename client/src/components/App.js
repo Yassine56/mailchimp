@@ -7,9 +7,10 @@ import { connect } from 'react-redux';
 // on the scree
 // Route used to setup a rule between the url and component
 
+import Landing from './Landing';
+/////////////
 
 const Dashboard = () => <h2> Dashboard </h2>;
-const LandingPage = () => <h2> LandingPage </h2>;
 const SurveyNew = () => <h2> SurvewNew </h2>;
 
 class App extends Component {
@@ -24,7 +25,7 @@ class App extends Component {
       <BrowserRouter>
           <div>
             <Route path="/" component={Header} />
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/" component={Landing} />
             <Route path="/surveys" component={Dashboard} />
           </div>
       </BrowserRouter>

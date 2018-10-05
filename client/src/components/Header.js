@@ -1,5 +1,6 @@
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -7,21 +8,31 @@ class Header extends Component {
     console.log(this.props.auth);
     switch(this.props.auth){
       case false :
-          return 'no user logged in';
+          return (
+            <li>
+              <a href="/auth/google"> Login with Google </a>
+            </li>
+          );
       case  null:
-          return 'still deciding';
+          return;
       default :
-          return 'user logged in';
+          return(
+            <li>
+              <a href="/API/logout"> Logout </a>
+            </li>
+          );
     }
   }
+  
 
   render () {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="#" className="brand-logo">MailChimp</a>
+          <Link to= {this.props.auth ? '/surveys' : '/' }
+            className="brand-logo">MailChimp</Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/auth/google">{ this.rendercontent() }</a></li>
+              { this.rendercontent() }
           </ul>
         </div>
       </nav>
