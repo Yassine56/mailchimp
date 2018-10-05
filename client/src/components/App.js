@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 // Route used to setup a rule between the url and component
 
 import Landing from './Landing';
+
 /////////////
 
 const Dashboard = () => <h2> Dashboard </h2>;

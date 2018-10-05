@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Payment from './Payment';
 
 class Header extends Component {
 
@@ -16,14 +17,15 @@ class Header extends Component {
       case  null:
           return;
       default :
-          return(
+          return([
+            <li><Payment /></li>,
             <li>
               <a href="/API/logout"> Logout </a>
             </li>
-          );
+          ]);
     }
   }
-  
+
 
   render () {
     return (
