@@ -4,6 +4,7 @@
   "description": "web app for mailing compaigns",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "concurrently": "^4.0.1",
     "cookie-session": "^2.0.0-beta.3",
     "express": "^4.16.3",
@@ -11,7 +12,8 @@
     "mongoose": "^5.2.17",
     "npm": "^6.4.1",
     "passport": "^0.4.0",
-    "passport-google-oauth20": "^1.0.0"
+    "passport-google-oauth20": "^1.0.0",
+    "stripe": "^6.12.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
@@ -19,8 +21,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
-    "client" : "npm run start --prefix client",
-    "start" : "concurrently \"npm run server\" \"npm run client\" "
+    "client": "npm run start --prefix client",
+    "start": "concurrently \"npm run server\" \"npm run client\" "
   },
   "repository": {
     "type": "git",

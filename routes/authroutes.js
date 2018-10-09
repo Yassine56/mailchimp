@@ -86,7 +86,7 @@ module.exports = (app) =>{
   })
   });
 
-  app.get('/API/currentUser', (req,res) => {
+  app.get('/api/currentUser', (req,res) => {
   if (req.user){
     res.send({
       user : req.user
@@ -95,7 +95,7 @@ module.exports = (app) =>{
 else res.send(false);
   });
 
-  app.get('/API/logout', (req,res) => {
+  app.get('/api/logout', (req,res) => {
   req.logout();
   res.redirect('/')
   });
