@@ -14,7 +14,7 @@ const charge =  await stripe.charges.create({
 req.user.credits+=5000;
 const user = await req.user.save();
 
-res.send(user);
+res.send({user : user});
 })
 
 }

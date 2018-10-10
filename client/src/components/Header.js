@@ -6,7 +6,6 @@ import Payment from './Payment';
 class Header extends Component {
 
   rendercontent(){
-
     console.log(this.props.auth);
     switch(this.props.auth){
       case false :
@@ -18,9 +17,10 @@ class Header extends Component {
       case  null:
           return;
       default :
+      console.log(this.props.auth);
           return([
             <li key="1"><Payment /></li>,
-            <li key="3" style={{margin : '0px 10px'}}> Credits: {this.props.auth.credits} </li>,
+            <li key="3" style={{margin : '0px 10px'}}> Credits: { this.props.auth.user.credits} </li>,
             <li key="2">
               <a href="/api/logout"> Logout </a>
             </li>
@@ -45,7 +45,7 @@ class Header extends Component {
   }
 }
 function mapStateToProps({auth}){ // mapStateToProps({auth}) es6 syntax // state.auth
-  return { auth };
+  return { auth : auth };
 }
 
 export default connect(mapStateToProps)(Header);
