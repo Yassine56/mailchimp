@@ -21,7 +21,7 @@ app.use(cookieSession({
 
 require('./routes/authroutes')(app);
 require('./routes/billingRoutes')(app);
-
+require('./routes/surveyRoutes')(app);
 
 
 
