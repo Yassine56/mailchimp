@@ -10,7 +10,7 @@ class Mailer extends helper.Mail {
     this.sgApi = sendgrid(keys.sendGridApiKey);
 
 
-    this.fromEmail = new helper.Email('no-reply@mailchimp.com');
+    this.from_email = new helper.Email('no-reply@mailchump.com');
     this.subject = subject;
     this.body = new helper.Content('text/html', content);
     this.recipients = this.formatAddresses(recipients);
@@ -19,7 +19,9 @@ class Mailer extends helper.Mail {
     this.addClickTracking();
 
     this.addRecipients();
+
   }
+
 
   formatAddresses(recipients){
     return recipients.map(({ email }) => {
@@ -36,20 +38,35 @@ class Mailer extends helper.Mail {
   }
 
   addRecipients(){
-    const personalize = new helper.Personalization();
+     const personalize = new helper.Personalization();
     this.recipients.forEach(recipient => {
-      personalize.addTo(recipient)
-    })
+      personalize.addTo(recipient);
+    });
+    console.log(personalize.toJSON());
     this.addPersonalization(personalize);
   }
-  async send(){
+   send(){
     const request = this.sgApi.emptyRequest({
       method: 'POST',
       path : '/v3/mail/send',
       body : this.toJSON()
     });
-    const resp = this.sgApi.API(request);
-    return resp;
+
+    console.log(request.body);
+
+      this.sgApi.API(request).then(response => {
+      console.log("working");
+      console.log(response.statusCode);
+      console.log(response.body);
+      console.log(response.headers);
+    })
+    .catch(error => {
+      //error is an instance of SendGridError
+      //The full response is attached to error.response
+      console.log("error");
+      console.log(error.response.statusCode);
+    });
+
   }
 }
 module.exports = Mailer;
