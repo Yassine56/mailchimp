@@ -8,11 +8,10 @@ import { connect } from 'react-redux';
 // Route used to setup a rule between the url and component
 
 import Landing from './Landing';
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 /////////////
-
-const Dashboard = () => <h2> Dashboard </h2>;
-const SurveyNew = () => <h2> SurvewNew </h2>;
 
 class App extends Component {
 
@@ -25,9 +24,10 @@ class App extends Component {
     <div className="container">
       <BrowserRouter>
           <div>
-            <Route path="/" component={Header} />
+            <Route  path="/" component={Header} />
+            <Route  path="/surveys/new" component={SurveyNew} />
             <Route exact path="/" component={Landing} />
-            <Route path="/surveys" component={Dashboard} />
+            <Route exact path="/surveys" component={Dashboard} />
           </div>
       </BrowserRouter>
     </div>
