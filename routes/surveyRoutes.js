@@ -27,7 +27,7 @@ app.post('/api/surveys',requireLogin, requireCredits, async (req,res) => {
     await survey.save();
     req.user.credits -= 100;
     const user = await req.user.save();
-    res.send(user);
+    res.send({user : user});
   }
   catch (err){
     res.status(422).send(err);
