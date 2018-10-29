@@ -10,8 +10,9 @@ app.get('api/surveys/thanks', (req, res)=> {
   res.send({message : 'thank you for your feedback'});
 })
 
-app.post('/api/surveys',requireLogin, requireCredits, async (req,res) => {
+app.post('/api/survey',requireLogin, requireCredits, async (req,res) => {
   const{ title , body, subject, recipients } = req.body;
+  console.log("request body  " + req.body.body);
   const survey = new Survey({
     title,
     body,
@@ -23,15 +24,24 @@ app.post('/api/surveys',requireLogin, requireCredits, async (req,res) => {
 
   const mailer = new Mailer(survey, surveyTemplate(survey));
   try {
-    mailer.send();
+    console.log("before send");
+    /// unhandled possible error, sendgrid send failure
+    await mailer.send();
+    console.log("sent");
     await survey.save();
     req.user.credits -= 100;
     const user = await req.user.save();
-    res.send({user : user});
+    res.send({user});
   }
   catch (err){
+    console.log("err here");
     res.status(422).send(err);
   }
+})
+app.post('/api/surveys/webhooks',(req,res)=>{
+  console.log(req.body[0].url);
+  res.send({});
+
 })
 
 };

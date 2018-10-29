@@ -12,9 +12,8 @@ class Mailer extends helper.Mail {
 
     this.from_email = new helper.Email('no-reply@mailchump.com');
     this.subject = subject;
-    this.body = new helper.Content('text/html', content);
+    this.body = new helper.Content('text/html', content|| 'text');
     this.recipients = this.formatAddresses(recipients);
-
     this.addContent(this.body);
     this.addClickTracking();
 
@@ -51,10 +50,12 @@ class Mailer extends helper.Mail {
       path : '/v3/mail/send',
       body : this.toJSON()
     });
-
+    console.log("here body down");
     console.log(request.body);
-
-      this.sgApi.API(request).then(response => {
+    console.log(request.body.personalizations[0]);
+    console.log("req body up");
+      this.sgApi.API(request)
+      .then(response => {
       console.log("working");
       console.log(response.statusCode);
       console.log(response.body);
@@ -63,7 +64,8 @@ class Mailer extends helper.Mail {
     .catch(error => {
       //error is an instance of SendGridError
       //The full response is attached to error.response
-      console.log("error");
+      console.log(error.response.body);
+      console.log("error heeeeere");
       console.log(error.response.statusCode);
     });
 
