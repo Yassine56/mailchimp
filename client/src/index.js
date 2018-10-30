@@ -11,9 +11,11 @@ import { createStore, applyMiddleware} from 'redux';
 import {FETCH_USER} from './actions/types';
 
 import reducers from './reducers';
+import axios from 'axios';
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk) );
 window.store = store;
+window.axios = axios;
 
 ReactDOM.render(<Provider store={store}><App /></Provider>,document.querySelector('#root'));
 

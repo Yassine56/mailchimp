@@ -41,7 +41,6 @@ class Mailer extends helper.Mail {
     this.recipients.forEach(recipient => {
       personalize.addTo(recipient);
     });
-    console.log(personalize.toJSON());
     this.addPersonalization(personalize);
   }
    send(){
@@ -50,13 +49,8 @@ class Mailer extends helper.Mail {
       path : '/v3/mail/send',
       body : this.toJSON()
     });
-    console.log("here body down");
-    console.log(request.body);
-    console.log(request.body.personalizations[0]);
-    console.log("req body up");
       this.sgApi.API(request)
       .then(response => {
-      console.log("working");
       console.log(response.statusCode);
       console.log(response.body);
       console.log(response.headers);
