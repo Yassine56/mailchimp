@@ -8,8 +8,8 @@ module.exports = survey => {
         '<h2> I would like your input, please anser the following question </h2>'+
         '<h3>' + survey.body + '</h3>'+
         '<ul>'+
-          '<li><a href="https://fast-bastion-94038.herokuapp.com'+survey.id+'/yes"> yes </a><li>'+
-          '<li><a href="https://fast-bastion-94038.herokuapp.com'+survey.id+'/no"> no </a><li>'+
+          '<li><a href="https://fast-bastion-94038.herokuapp.com/'+survey.id+'/yes"> yes </a><li>'+
+          '<li><a href="https://fast-bastion-94038.herokuapp.com/'+survey.id+'/no"> no </a><li>'+
         '</ul>'+
       '</div>'+
       '</body>'+
