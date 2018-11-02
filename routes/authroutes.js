@@ -20,7 +20,7 @@ module.exports = (app) =>{
   passport.use(new GoogleStrategy({
     clientID: keys.googleClientID,
     clientSecret : keys.googleClientSecret,
-    callbackURL : (keys.absoluteURI || "") + '/auth/google/callback',
+    callbackURL : '/auth/google/callback',
     proxy : true
   }, async (accessToken, refreshToken, profile, done) => {
     console.log(accessToken);
@@ -79,12 +79,6 @@ module.exports = (app) =>{
     res.send({
       message : "login page bi idni llah"
     })
-  })
-  app.get('/', (req,res) => {
-
-  res.send({
-    message : "hello mail chimp"
-  })
   });
 
   app.get('/api/currentUser', (req,res) => {
