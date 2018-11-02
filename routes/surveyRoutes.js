@@ -17,7 +17,7 @@ app.get('/api/surveys',requireLogin, async (req,res)=> {
     res.send(surveys);
 });
 
-app.get('/ api/surveys/:surveyId/:choice', (req, res)=> {
+app.get('/api/surveys/:surveyId/:choice', (req, res)=> {
   res.send({message : 'thank you for your feedback'});
 });
 
