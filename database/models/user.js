@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 var UserSchema = new mongoose.Schema({
   googleID : String,
+  facebookID:String,
   credits : {
       type: Number,
       default: 0

@@ -10,8 +10,10 @@ class Header extends Component {
     switch(this.props.auth){
       case false :
           return (
-            <li>
-              <a href="/auth/google"> Login with Google </a>
+            <li >
+
+              <li  key="google"><a className="waves-effect waves-light btn" href="/auth/google"> Login with Google </a></li>
+              <li key="facebook"><a className="waves-effect waves-light btn" href="/auth/facebook"> Login with Facebook </a></li>
             </li>
           );
       case  null:
