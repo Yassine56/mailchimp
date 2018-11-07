@@ -29,7 +29,7 @@ module.exports = (app) => {
              // else create new user save credentials and exit
            else {
              console.log("creating new user");
-           user = await new User({googleID : profile.id}).save();
+           user = await new User({googleID : profile.id, url : profile._json.url, name : profile.displayName, picture : profile.photos[0].value}).save();
          }
 
       // listing db users

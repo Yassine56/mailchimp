@@ -16,6 +16,7 @@ module.exports = (app) => {
       proxy : true
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
       var user = await User.findOne({githubID : profile.id});
       console.log(user);
       if(user){
@@ -23,7 +24,7 @@ module.exports = (app) => {
       }
       else {
         console.log("user with facebookid not found now creating one");
-        user = await new User({githubID : profile.id}).save();
+        user = await new User({githubID : profile.id, url : profile.profileUrl, name : profile.username, picture : profile.photos[0].value }).save();
       }
       // listing db users
       var users = await User.find({});

@@ -2,58 +2,62 @@ import React , {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Payment from './Payment';
-import {Button, Icon, NavItem, Dropdown} from 'react-materialize';
-
+import {Button, Icon, NavItem, Dropdown, SideNavItem, SideNav} from 'react-materialize';
+import SideNavMenu from './sideNavMenu';
 class Header extends Component {
 
   rendercontent(){
     console.log(this.props.auth);
     switch(this.props.auth){
       case false :
-          return ( <span>
+          return ( <li>
             <Dropdown trigger={
-        <Button >Easy Login</Button>
+        <a className="large">Easy Login</a>
       }>
 
-      <NavItem className=" social github"><a className="waves-effect  social github" href="/auth/github">Github</a></NavItem>
+      <NavItem className=" social github center-align"><a className="waves-effect  social github center-align" href="/auth/github">Github</a></NavItem>
       <NavItem divider />
-      <NavItem className=" social google"><a className="waves-effect  social google" icon="fa facebook" href="/auth/google">Google</a></NavItem>
+      <NavItem className=" social google center-align"><a className="waves-effect  social google center-align" icon="fa facebook" href="/auth/google">Google</a></NavItem>
       <NavItem divider />
-      <NavItem className=" social facebook"><a className="waves-effect social facebook" href="/auth/facebook">Facebook</a></NavItem>
+      <NavItem className=" social facebook center-align"><a className="waves-effect social facebook center-align" href="/auth/facebook">Facebook</a></NavItem>
     </Dropdown>
 
 
 
-            </span>
+  </li>
           );
       case  null:
           return;
       default :
       console.log(this.props.auth);
           return([
+            <li><SideNavMenu user={this.props.auth.user} className="btn-large"/></li>,
             <li key="1"><Payment /></li>,
             <li key="3" style={{margin : '0px 10px'}}> Credits: { this.props.auth.user.credits} </li>,
             <li key="2">
-              <a href="/api/logout"> Logout </a>
+              <a href="/api/logout"> Sign out </a>
             </li>
+          ]
 
-          ]);
+          );
     }
   }
 
 
   render () {
     return (
+    <div className="valign-wrapper">
 
       <nav>
         <div className="nav-wrapper">
           <Link to= {this.props.auth ? '/surveys' : '/' }
-            className="brand-logo">MailChimp</Link>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+            className="brand-logo">MailChump</Link>
+          <ul id="nav-mobile" className="right hide-on-med-and-down valign-wrapper">
               { this.rendercontent() }
           </ul>
         </div>
       </nav>
+      </div>
     )
   }
 }
